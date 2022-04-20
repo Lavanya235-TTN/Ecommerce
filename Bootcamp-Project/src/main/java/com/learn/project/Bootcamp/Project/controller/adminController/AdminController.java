@@ -28,7 +28,7 @@ public class AdminController {
     AdminService adminService;
 
 
-    @PatchMapping(value = "/activateCustomer/{id}")
+    @PutMapping(value = "/activateCustomer/{id}")
     public ResponseEntity<User> activateCustomer(@PathVariable("id") int id){
         System.out.println("ID: "+id);
         User customer=userRepository.findById(id).get();
@@ -37,8 +37,8 @@ public class AdminController {
             return new ResponseEntity<User>(customer, HttpStatus.NOT_FOUND);
         }
         else if(customer.isActive()){
-            System.out.println(" found");
-            return new ResponseEntity<User>(customer, HttpStatus.OK);
+            System.out.println("Already active customer");
+            return new ResponseEntity<User>(customer, HttpStatus.BAD_REQUEST);
         }
         else {
             System.out.println("Found");

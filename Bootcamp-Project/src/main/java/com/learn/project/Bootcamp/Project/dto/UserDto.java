@@ -2,9 +2,6 @@ package com.learn.project.Bootcamp.Project.dto;
 
 import lombok.Data;
 
-import javax.validation.constraints.Email;
-import java.math.BigInteger;
-
 @Data
 public class UserDto {
     private int id;
